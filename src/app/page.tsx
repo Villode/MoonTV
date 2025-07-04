@@ -198,6 +198,7 @@ function HomeClient() {
                             poster={movie.poster}
                             rate={movie.rate}
                             type='movie'
+                            isLCP={index === 0}
                           />
                         </div>
                       ))}
@@ -244,6 +245,7 @@ function HomeClient() {
                             poster={show.poster}
                             rate={show.rate}
                             type='tv'
+                            isLCP={index === 0 && hotMovies.length === 0}
                           />
                         </div>
                       ))}

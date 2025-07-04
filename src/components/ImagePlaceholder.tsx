@@ -1,18 +1,18 @@
 // 图片占位符组件 - 实现骨架屏效果（支持暗色模式）
 const ImagePlaceholder = ({ aspectRatio }: { aspectRatio: string }) => (
   <div
-    className={`w-full ${aspectRatio} rounded-md overflow-hidden`}
-    style={{
-      background:
-        'linear-gradient(90deg, var(--skeleton-color) 25%, var(--skeleton-highlight) 50%, var(--skeleton-color) 75%)',
-      backgroundSize: '200% 100%',
-      animation: 'shine 1.5s infinite',
-    }}
+    className={`w-full ${aspectRatio} rounded-md overflow-hidden animate-shimmer bg-skeleton`}
   >
     <style>{`
-      @keyframes shine {
-        0% { background-position: -200% 0; }
-        100% { background-position: 200% 0; }
+      /* 自定义骨架屏背景 */
+      .bg-skeleton {
+        background: linear-gradient(
+          90deg, 
+          var(--skeleton-color, #f0f0f0) 25%, 
+          var(--skeleton-highlight, #e0e0e0) 50%, 
+          var(--skeleton-color, #f0f0f0) 75%
+        );
+        background-size: 200% 100%;
       }
       
       /* 亮色模式变量 */

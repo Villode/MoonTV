@@ -21,6 +21,7 @@ interface VideoCardProps {
   currentEpisode?: number;
   douban_id?: number;
   onDelete?: () => void;
+  isLCP?: boolean; // 是否是最大内容绘制元素
 }
 
 function CheckCircleCustom() {
@@ -88,6 +89,7 @@ export default function VideoCard({
   currentEpisode,
   douban_id,
   onDelete,
+  isLCP = false, // 默认不是LCP
 }: VideoCardProps) {
   const [playHover, setPlayHover] = useState(false);
   const [favorited, setFavorited] = useState(false);
@@ -177,9 +179,9 @@ export default function VideoCard({
                           ? 'opacity-100 scale-100'
                           : 'opacity-0 scale-95'
                       }`}
-            onLoadingComplete={() => setIsLoaded(true)}
+            onLoad={() => setIsLoaded(true)}
             referrerPolicy='no-referrer'
-            priority={false}
+            priority={isLCP || from === 'home'} // 首页内容或指定为LCP的图片设置为高优先级
           />
           {/* Hover 效果层 */}
           <div

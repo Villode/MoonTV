@@ -1,6 +1,11 @@
 {
   "cache_time": 7200,
   "api_site": {
+    "liangzi": {
+      "api": "https://cj.lziapi.com/api.php/provide/vod/",
+      "name": "量子资源",
+      "detail": "https://cj.lziapi.com"
+    },
     "dyttzy": {
       "api": "http://caiji.dyttzyapi.com/api.php/provide/vod",
       "name": "电影天堂资源",

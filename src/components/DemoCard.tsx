@@ -11,6 +11,7 @@ interface DemoCardProps {
   poster: string;
   rate?: string;
   type?: string;
+  isLCP?: boolean; // 是否是最大内容绘制元素
 }
 
 function SearchCircle({
@@ -46,7 +47,14 @@ function SearchCircle({
   );
 }
 
-const DemoCard = ({ id, title, poster, rate, type }: DemoCardProps) => {
+const DemoCard = ({
+  id,
+  title,
+  poster,
+  rate,
+  type,
+  isLCP = false,
+}: DemoCardProps) => {
   const [hover, setHover] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const router = useRouter();
@@ -80,9 +88,9 @@ const DemoCard = ({ id, title, poster, rate, type }: DemoCardProps) => {
                           ? 'opacity-100 scale-100'
                           : 'opacity-0 scale-95'
                       }`}
-          onLoadingComplete={() => setIsLoaded(true)}
+          onLoad={() => setIsLoaded(true)}
           referrerPolicy='no-referrer'
-          priority={false}
+          priority={isLCP}
         />
 
         {/* 评分徽章 - 暗色模式优化 */}

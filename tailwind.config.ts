@@ -47,10 +47,10 @@ const config: Config = {
         },
         shimmer: {
           '0%': {
-            backgroundPosition: '-700px 0',
+            backgroundPosition: '-200% 0',
           },
           '100%': {
-            backgroundPosition: '700px 0',
+            backgroundPosition: '200% 0',
           },
         },
         fadeIn: {
@@ -68,7 +68,7 @@ const config: Config = {
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
-        shimmer: 'shimmer 1.3s linear infinite',
+        shimmer: 'shimmer 1.5s linear infinite',
         'fade-in': 'fadeIn 0.3s ease-in-out',
         'slide-up': 'slideUp 0.3s ease-in-out',
         'slide-down': 'slideDown 0.3s ease-in-out',
