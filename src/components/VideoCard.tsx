@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 import { deletePlayRecord, isFavorited, toggleFavorite } from '@/lib/db.client';
+import { getProxiedImageUrl } from '@/lib/utils';
 
 import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 
@@ -97,6 +98,9 @@ export default function VideoCard({
   const [isDeleting, setIsDeleting] = useState(false);
   const router = useRouter();
 
+  // 处理图片URL，解决CORS问题
+  const proxiedPoster = getProxiedImageUrl(poster);
+
   // 检查初始收藏状态
   useEffect(() => {
     (async () => {
@@ -170,7 +174,7 @@ export default function VideoCard({
           <ImagePlaceholder aspectRatio='aspect-[2/3]' />
 
           <Image
-            src={poster}
+            src={proxiedPoster}
             alt={title}
             fill
             className={`object-cover transition-transform duration-500 cubic-bezier(0.4,0,0.2,1) group-hover:scale-110

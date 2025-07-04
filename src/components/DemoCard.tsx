@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useRef, useState } from 'react';
 
+import { getProxiedImageUrl } from '@/lib/utils';
+
 import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 
 interface DemoCardProps {
@@ -60,6 +62,9 @@ const DemoCard = ({
   const router = useRouter();
   const imgRef = useRef<HTMLImageElement>(null);
 
+  // 处理图片URL，解决CORS问题
+  const proxiedPoster = getProxiedImageUrl(poster);
+
   const handleClick = () => {
     router.push(
       `/aggregate?q=${encodeURIComponent(title.trim())}&type=${type}`
@@ -78,7 +83,7 @@ const DemoCard = ({
 
         {/* 图片组件 */}
         <Image
-          src={poster}
+          src={proxiedPoster}
           alt={title}
           fill
           ref={imgRef}
