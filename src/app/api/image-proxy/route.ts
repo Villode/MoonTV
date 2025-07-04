@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// 指定使用Edge Runtime
+export const runtime = 'edge';
+
 /**
  * 图片代理API - 用于解决CORS问题
  *
